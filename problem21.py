@@ -1,5 +1,6 @@
 # Intuition: Dynamic programming
 # Reality, summing is pretty cheap, is this very self similar?
+import math
 
 def d(n):
     proper_divisors = []
@@ -9,17 +10,14 @@ def d(n):
 
     return sum(proper_divisors)
 
-amicable_numbers = set()
+amicable_numbers = []
 
 lim = 10000
 
 for a in range(1, lim):
     b = d(a)
-    if a == d(b) and a != b:
-        if a < lim:
-            amicable_numbers.add(a)
-        if b < lim:
-            amicable_numbers.add(b)
+    if b > a and a == d(b):
+        amicable_numbers += [a, b]
 
 print amicable_numbers
 print sum(amicable_numbers)
